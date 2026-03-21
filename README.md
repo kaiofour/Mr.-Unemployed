@@ -17,11 +17,6 @@
 
 ---
 
-## 🔗 GitHub Repository Link
-[https://github.com/...](https://github.com/...)
-
----
-
 ## 🚀 Elevator Pitch / Hook
 
 A desperate job applicant enters a chaotic trial where he must survive absurd workplace-themed obstacle courses because only one person can get hired!!!
