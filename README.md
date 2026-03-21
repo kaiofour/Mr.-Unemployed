@@ -38,7 +38,7 @@ A humorous and satirical take on job competition where players navigate corporat
 Lighthearted, comedic, slightly chaotic atmosphere with colorful pixel art inspired by supermarkets and workplaces  
 
 **High-level Story / Setting:**  
-A supermarket called **Atam Technologies** announces a job opening, attracting many applicants. However, upon arrival, they are told that only one position is available. To decide who gets hired, the applicants must compete in a series of absurd “trials” inside the supermarket. The player takes on the role of one applicant trying to survive these challenges and secure the job.
+A company called **Atam Technologies** announces a job opening, attracting many applicants. However, upon arrival, they are told that only one position is available. To decide who gets hired, the applicants must compete in a series of absurd “trials” inside the company. The player takes on the role of one applicant trying to survive these challenges and secure the job.
 
 ---
 
