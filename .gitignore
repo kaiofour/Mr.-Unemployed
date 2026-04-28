@@ -1,0 +1,10 @@
+# Godot-specific ignores
+.godot/
+
+# Import files (optional — include if you want consistent import settings across machines)
+# *.import
+
+# Mono/C# specific
+.mono/
+data_*/
+mono_crash.*.json
