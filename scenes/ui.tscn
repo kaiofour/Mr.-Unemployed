@@ -1,0 +1,159 @@
+[gd_scene format=3 uid="uid://16du8oxbopaf"]
+
+[ext_resource type="Script" uid="uid://bc7qhsnyprti0" path="res://scripts/ui.gd" id="1_nt7q6"]
+
+[node name="UI" type="CanvasLayer" unique_id=909955884]
+process_mode = 3
+script = ExtResource("1_nt7q6")
+
+[node name="HUD" type="Control" parent="." unique_id=1106652767]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD" unique_id=556968263]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TimerLabel" type="Label" parent="HUD/VBoxContainer" unique_id=1929913765]
+layout_mode = 2
+text = "Time:"
+
+[node name="LivesLabel" type="Label" parent="HUD/VBoxContainer" unique_id=1875500523]
+layout_mode = 2
+text = "Lives:"
+
+[node name="StaminaLabel" type="Label" parent="HUD/VBoxContainer" unique_id=2111183656]
+layout_mode = 2
+text = "Stamina:"
+
+[node name="LevelTimer" type="Timer" parent="." unique_id=2112117044]
+
+[node name="PauseMenu" type="ColorRect" parent="." unique_id=2124112829]
+custom_minimum_size = Vector2(250, 150)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.5882353)
+
+[node name="PauseContainer" type="BoxContainer" parent="PauseMenu" unique_id=1157713630]
+custom_minimum_size = Vector2(124, 58)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.5
+offset_top = -29.0
+offset_right = 90.5
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+
+[node name="PauseLabel" type="Label" parent="PauseMenu/PauseContainer" unique_id=1538966524]
+layout_mode = 2
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonContainer" type="BoxContainer" parent="PauseMenu/PauseContainer" unique_id=264400467]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/PauseContainer/ButtonContainer" unique_id=613792180]
+layout_mode = 2
+text = "Resume"
+
+[node name="RetryButton" type="Button" parent="PauseMenu/PauseContainer/ButtonContainer" unique_id=701221034]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "Retry"
+
+[node name="MenuButton" type="Button" parent="PauseMenu/PauseContainer/ButtonContainer" unique_id=1651672056]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "Menu"
+
+[node name="GameoverMenu" type="ColorRect" parent="." unique_id=1557793287]
+custom_minimum_size = Vector2(200, 150)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.60784316)
+
+[node name="GameoverContainer" type="BoxContainer" parent="GameoverMenu" unique_id=1440230102]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -29.0
+offset_right = 62.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+
+[node name="GameoverLabel" type="Label" parent="GameoverMenu/GameoverContainer" unique_id=1456795779]
+layout_mode = 2
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonContainer" type="BoxContainer" parent="GameoverMenu/GameoverContainer" unique_id=1963411929]
+layout_mode = 2
+alignment = 1
+
+[node name="RetryButton" type="Button" parent="GameoverMenu/GameoverContainer/ButtonContainer" unique_id=1375852647]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "Retry"
+
+[node name="MenuButton" type="Button" parent="GameoverMenu/GameoverContainer/ButtonContainer" unique_id=261712178]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+text = "Menu"
+
+[node name="WinMenu" type="ColorRect" parent="." unique_id=552552297]
+visible = false
+custom_minimum_size = Vector2(500, 360)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -180.0
+offset_right = 250.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NextButton" type="Button" parent="WinMenu" unique_id=1618718657]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="MenuButton" type="Button" parent="WinMenu" unique_id=815339996]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
