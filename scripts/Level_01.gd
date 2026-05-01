@@ -1,24 +1,23 @@
 extends Node2D
 
 @onready var player: Player = $Player
-@onready var hud: HUD = $HUD
+@onready var ui = $UI # Changed to point to the new UI scene
 
 func _ready() -> void:
 	GameManager.respawn_position = player.position
 	GameManager.reset()
 
-	player.stamina_changed.connect(hud.update_stamina)
+	# Route signals to UI instead of HUD
+	player.stamina_changed.connect(ui.update_stamina)
 	player.died.connect(_on_player_died)
-	GameManager.lives_changed.connect(hud.update_lives)
-	GameManager.game_over.connect(_on_game_over)
+	GameManager.lives_changed.connect(ui.update_lives)
+	
+	# We REMOVED the GameManager.game_over.connect here. The UI script handles it now.
 
-	hud.update_stamina(3)
-	hud.update_lives(GameManager.lives)
+	ui.update_stamina(3)
+	ui.update_lives(GameManager.lives)
 
 func _on_player_died() -> void:
 	GameManager.lose_life()
 	if GameManager.lives > 0:
 		player.respawn(GameManager.respawn_position)
-
-func _on_game_over() -> void:
-	get_tree().reload_current_scene()
