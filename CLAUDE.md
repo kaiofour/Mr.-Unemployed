@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-2D platformer in **Godot 4.3** (GDScript). Game design document is at `C:\Users\Russel\Documents\game-dev-vault\Draft.md`.
+2D platformer in **Godot 4.6** (GDScript). Game design document is at `C:\Users\Russel\Documents\game-dev-vault\Draft.md`.
 
 ## Structure
 

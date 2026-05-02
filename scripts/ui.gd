@@ -28,8 +28,8 @@ func _ready():
 	$GameoverMenu/GameoverContainer/ButtonContainer/MenuButton.pressed.connect(go_to_main_menu)
 	
 	# Connect Win Menu Buttons
-	$WinMenu/NextButton.pressed.connect(next_level)
-	$WinMenu/MenuButton.pressed.connect(go_to_main_menu)
+	$WinMenu/WinContainer/ButtonContainer/NextButton.pressed.connect(next_level)
+	$WinMenu/WinContainer/ButtonContainer/MenuButton.pressed.connect(go_to_main_menu)
 	
 	# Listen to your GameManager instead of handling lives internally
 	GameManager.game_over.connect(trigger_game_over)
@@ -69,7 +69,12 @@ func go_to_main_menu():
 
 func next_level():
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/Level_02.tscn") # Update this path when you have Level 2
+	var next := GameManager.get_next_level_path()
+	if next.is_empty():
+		go_to_main_menu()
+		return
+	GameManager.advance_level()
+	get_tree().change_scene_to_file(next)
 
 # --- Timer Logic ---
 func _on_timer_tick():
@@ -90,6 +95,7 @@ func trigger_game_over():
 	gameover_menu.show()
 
 func trigger_win():
+	level_timer.stop()
 	get_tree().paused = true
 	win_menu.show()
 

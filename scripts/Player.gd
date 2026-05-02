@@ -28,6 +28,7 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		AudioManager.play_sfx("jump")
 
 	_process_dash(delta)
 	_process_stamina_regen(delta)
@@ -56,6 +57,7 @@ func _process_dash(delta: float) -> void:
 		stamina_regen_timer = 0.0
 		emit_signal("stamina_changed", stamina)
 		dash_dir = facing_dir
+		AudioManager.play_sfx("dash")
 
 	if is_dashing:
 		dash_timer -= delta
@@ -74,6 +76,7 @@ func _process_stamina_regen(delta: float) -> void:
 
 func _die() -> void:
 	is_dead = true
+	AudioManager.play_sfx("hit")
 	emit_signal("died")
 
 func respawn(pos: Vector2) -> void:
@@ -84,4 +87,5 @@ func respawn(pos: Vector2) -> void:
 	emit_signal("stamina_changed", stamina)
 
 func take_hit() -> void:
-	_die()
+	if not is_dead:
+		_die()

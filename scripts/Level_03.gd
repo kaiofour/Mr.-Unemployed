@@ -5,7 +5,7 @@ extends Node2D
 @onready var win_zone: Area2D = $WinZone
 
 func _ready() -> void:
-	GameManager.current_level = 1
+	GameManager.current_level = 3
 	GameManager.respawn_position = player.position
 	GameManager.reset()
 
@@ -18,7 +18,7 @@ func _ready() -> void:
 	ui.update_stamina(3)
 	ui.update_lives(GameManager.lives)
 
-	AudioManager.play_music(1)
+	AudioManager.play_music(3)
 
 func _on_player_died() -> void:
 	GameManager.lose_life()

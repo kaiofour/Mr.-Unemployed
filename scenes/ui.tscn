@@ -135,25 +135,50 @@ text = "Menu"
 
 [node name="WinMenu" type="ColorRect" parent="." unique_id=552552297]
 visible = false
-custom_minimum_size = Vector2(500, 360)
+custom_minimum_size = Vector2(300, 180)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -180.0
-offset_right = 250.0
-offset_bottom = 180.0
+offset_left = -150.0
+offset_top = -90.0
+offset_right = 150.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15, 0.15, 0.18, 0.92)
+
+[node name="WinContainer" type="VBoxContainer" parent="WinMenu" unique_id=1001001001]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -60.0
+offset_right = 100.0
+offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NextButton" type="Button" parent="WinMenu" unique_id=1618718657]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="WinLabel" type="Label" parent="WinMenu/WinContainer" unique_id=1001001002]
+layout_mode = 2
+text = "Level Clear!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="MenuButton" type="Button" parent="WinMenu" unique_id=815339996]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="ButtonContainer" type="BoxContainer" parent="WinMenu/WinContainer" unique_id=1001001003]
+layout_mode = 2
+alignment = 1
+
+[node name="NextButton" type="Button" parent="WinMenu/WinContainer/ButtonContainer" unique_id=1618718657]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+text = "Next Level"
+
+[node name="MenuButton" type="Button" parent="WinMenu/WinContainer/ButtonContainer" unique_id=815339996]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+text = "Main Menu"

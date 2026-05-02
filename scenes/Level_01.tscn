@@ -69,3 +69,16 @@ shape = SubResource("2")
 [node name="Visual" type="Polygon2D" parent="Platforms/Platform_D" unique_id=1274333397]
 color = Color(0.4, 0.55, 0.45, 1)
 polygon = PackedVector2Array(-100, -12, 100, -12, 100, 12, -100, 12)
+
+[node name="WinZone" type="Area2D" parent="."]
+position = Vector2(1150, 540)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WinZone"]
+shape = SubResource("2")
+
+[node name="WinVisual" type="ColorRect" parent="WinZone"]
+offset_left = -32.0
+offset_top = -64.0
+offset_right = 32.0
+offset_bottom = 0.0
+color = Color(1, 0.85, 0.1, 0.6)
