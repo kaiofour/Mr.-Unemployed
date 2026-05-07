@@ -10,7 +10,7 @@
 
 ## 👨‍💻 Team Members & Roles
 
-- **Klyde Perante** – Lead Programmer / Godot Specialist  
+-  **Kurt Russel Carrillo** & **Klyde Perante** – Programmers  
 - **Kurt Russel Carrillo** – Artist & Animator  
 - **Kurt Russel Carrillo** – Game Designer / Level Designer  
 - **Klyde Perante** – Audio & UI / Tester  
