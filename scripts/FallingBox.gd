@@ -5,7 +5,7 @@ extends Node2D
 @export var warning_time := 1.0
 
 @onready var box: Area2D = $Box
-@onready var shadow: ColorRect = $Shadow
+@onready var shadow: Sprite2D = $Shadow
 @onready var timer: Timer = $Timer
 
 var start_y := 0.0

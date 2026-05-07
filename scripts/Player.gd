@@ -18,6 +18,7 @@ var dash_dir := 1.0
 var stamina_regen_timer := 0.0
 var facing_dir := 1.0
 var is_dead := false
+var on_wet_floor := false
 
 @onready var sprite := $AnimatedSprite2D
 
@@ -61,7 +62,8 @@ func _process_movement() -> void:
 		facing_dir = sign(dir)
 		velocity.x = dir * SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0.0, SPEED)
+		var decel := SPEED * 0.03 if on_wet_floor else SPEED
+		velocity.x = move_toward(velocity.x, 0.0, decel)
 
 func _process_dash(delta: float) -> void:
 	if Input.is_action_just_pressed("dash") and stamina > 0 and not is_dashing:

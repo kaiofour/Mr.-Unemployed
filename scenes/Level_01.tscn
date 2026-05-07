@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://ek0x41f00gqq" path="res://scripts/Level_01.gd" id="3"]
 [ext_resource type="Texture2D" path="res://assets/backgrounds/level1_bg.png" id="4_bg"]
 [ext_resource type="Texture2D" path="res://assets/sprites/tiles/tile_warehouse.png" id="5_tile"]
+[ext_resource type="Texture2D" path="res://assets/sprites/exit_door.png" id="6_exit"]
+[ext_resource type="Script" path="res://scripts/WinDoor.gd" id="7_windoor"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(1280, 40)
@@ -107,9 +109,9 @@ position = Vector2(1150, 540)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WinZone"]
 shape = SubResource("2")
 
-[node name="WinVisual" type="ColorRect" parent="WinZone"]
-offset_left = -32.0
-offset_top = -64.0
-offset_right = 32.0
-offset_bottom = 0.0
-color = Color(1, 0.85, 0.1, 0.6)
+[node name="WinVisual" type="Sprite2D" parent="WinZone"]
+position = Vector2(0, -24)
+scale = Vector2(2, 2)
+texture_filter = 1
+texture = ExtResource("6_exit")
+script = ExtResource("7_windoor")

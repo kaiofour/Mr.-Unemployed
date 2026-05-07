@@ -7,9 +7,19 @@ extends CanvasLayer
 @onready var gameover_menu = $GameoverMenu
 @onready var win_menu = $WinMenu
 
-# Replaced old HUD labels
-@onready var stamina_label = $HUD/VBoxContainer/StaminaLabel
-@onready var lives_label = $HUD/VBoxContainer/LivesLabel
+@onready var stamina_segs := [
+	$HUD/VBoxContainer/StaminaBar/Seg1,
+	$HUD/VBoxContainer/StaminaBar/Seg2,
+	$HUD/VBoxContainer/StaminaBar/Seg3,
+]
+@onready var lives_icons := [
+	$HUD/VBoxContainer/LivesDisplay/Icon1,
+	$HUD/VBoxContainer/LivesDisplay/Icon2,
+	$HUD/VBoxContainer/LivesDisplay/Icon3,
+]
+
+var tex_seg_full: Texture2D = preload("res://assets/ui/stamina_segment_full.png")
+var tex_seg_empty: Texture2D = preload("res://assets/ui/stamina_segment_empty.png")
 
 var time_left = 60 # Set your starting seconds here
 
@@ -99,12 +109,10 @@ func trigger_win():
 	get_tree().paused = true
 	win_menu.show()
 
-# --- Old HUD Logic ---
 func update_stamina(current: int) -> void:
-	var bars := ""
 	for i in range(3):
-		bars += "[X]" if i < current else "[ ]"
-	stamina_label.text = "Dash  " + bars
+		stamina_segs[i].texture = tex_seg_full if i < current else tex_seg_empty
 
 func update_lives(current: int) -> void:
-	lives_label.text = "Lives: " + str(current)
+	for i in range(3):
+		lives_icons[i].visible = i < current

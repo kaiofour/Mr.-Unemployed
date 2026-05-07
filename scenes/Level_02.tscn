@@ -3,19 +3,25 @@
 [ext_resource type="PackedScene" path="res://scenes/Player.tscn" id="player"]
 [ext_resource type="PackedScene" uid="uid://16du8oxbopaf" path="res://scenes/ui.tscn" id="ui"]
 [ext_resource type="Script" path="res://scripts/Level_02.gd" id="lvl"]
-[ext_resource type="Texture2D" path="res://assets/backgrounds/level2_bg.png" id="bg"]
-[ext_resource type="Texture2D" path="res://assets/sprites/tiles/tile_office.png" id="tile"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/level3_bg.png" id="bg"]
+[ext_resource type="Texture2D" path="res://assets/sprites/tiles/tile_cafeteria.png" id="tile"]
 [ext_resource type="PackedScene" path="res://scenes/Pacer.tscn" id="pacer"]
 [ext_resource type="PackedScene" path="res://scenes/Chaser.tscn" id="chaser"]
 [ext_resource type="PackedScene" path="res://scenes/MovingShelf.tscn" id="shelf"]
 [ext_resource type="PackedScene" path="res://scenes/ConveyorBelt.tscn" id="conveyor"]
+[ext_resource type="PackedScene" path="res://scenes/FallingBox.tscn" id="fallingbox"]
 [ext_resource type="PackedScene" path="res://scenes/Checkpoint.tscn" id="checkpoint"]
+[ext_resource type="Texture2D" path="res://assets/sprites/exit_door.png" id="exit"]
+[ext_resource type="Script" path="res://scripts/WinDoor.gd" id="windoor"]
 
 [sub_resource type="RectangleShape2D" id="gnd"]
 size = Vector2(1280, 40)
 
 [sub_resource type="RectangleShape2D" id="plat"]
 size = Vector2(200, 24)
+
+[sub_resource type="RectangleShape2D" id="plat_sm"]
+size = Vector2(120, 24)
 
 [sub_resource type="CircleShape2D" id="win"]
 radius = 48.0
@@ -83,8 +89,21 @@ texture = ExtResource("tile")
 region_enabled = true
 region_rect = Rect2(0, 0, 1280, 32)
 
+[node name="Ground4" type="StaticBody2D" parent="Platforms"]
+position = Vector2(4480, 720)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Ground4"]
+shape = SubResource("gnd")
+
+[node name="Visual" type="Sprite2D" parent="Platforms/Ground4"]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("tile")
+region_enabled = true
+region_rect = Rect2(0, 0, 1280, 32)
+
 [node name="Platform_A" type="StaticBody2D" parent="Platforms"]
-position = Vector2(300, 620)
+position = Vector2(300, 600)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_A"]
 shape = SubResource("plat")
@@ -97,20 +116,20 @@ region_enabled = true
 region_rect = Rect2(0, 0, 200, 24)
 
 [node name="Platform_B" type="StaticBody2D" parent="Platforms"]
-position = Vector2(600, 510)
+position = Vector2(600, 500)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_B"]
-shape = SubResource("plat")
+shape = SubResource("plat_sm")
 
 [node name="Visual" type="Sprite2D" parent="Platforms/Platform_B"]
 texture_filter = 1
 texture_repeat = 2
 texture = ExtResource("tile")
 region_enabled = true
-region_rect = Rect2(0, 0, 200, 24)
+region_rect = Rect2(0, 0, 120, 24)
 
 [node name="Platform_C" type="StaticBody2D" parent="Platforms"]
-position = Vector2(900, 410)
+position = Vector2(850, 400)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_C"]
 shape = SubResource("plat")
@@ -123,20 +142,20 @@ region_enabled = true
 region_rect = Rect2(0, 0, 200, 24)
 
 [node name="Platform_D" type="StaticBody2D" parent="Platforms"]
-position = Vector2(1200, 510)
+position = Vector2(1150, 500)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_D"]
-shape = SubResource("plat")
+shape = SubResource("plat_sm")
 
 [node name="Visual" type="Sprite2D" parent="Platforms/Platform_D"]
 texture_filter = 1
 texture_repeat = 2
 texture = ExtResource("tile")
 region_enabled = true
-region_rect = Rect2(0, 0, 200, 24)
+region_rect = Rect2(0, 0, 120, 24)
 
 [node name="Platform_E" type="StaticBody2D" parent="Platforms"]
-position = Vector2(1550, 620)
+position = Vector2(1450, 600)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_E"]
 shape = SubResource("plat")
@@ -149,7 +168,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 200, 24)
 
 [node name="Platform_F" type="StaticBody2D" parent="Platforms"]
-position = Vector2(1850, 510)
+position = Vector2(1750, 480)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_F"]
 shape = SubResource("plat")
@@ -162,20 +181,20 @@ region_enabled = true
 region_rect = Rect2(0, 0, 200, 24)
 
 [node name="Platform_G" type="StaticBody2D" parent="Platforms"]
-position = Vector2(2150, 410)
+position = Vector2(2050, 380)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_G"]
-shape = SubResource("plat")
+shape = SubResource("plat_sm")
 
 [node name="Visual" type="Sprite2D" parent="Platforms/Platform_G"]
 texture_filter = 1
 texture_repeat = 2
 texture = ExtResource("tile")
 region_enabled = true
-region_rect = Rect2(0, 0, 200, 24)
+region_rect = Rect2(0, 0, 120, 24)
 
 [node name="Platform_H" type="StaticBody2D" parent="Platforms"]
-position = Vector2(2450, 510)
+position = Vector2(2350, 480)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_H"]
 shape = SubResource("plat")
@@ -188,7 +207,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 200, 24)
 
 [node name="Platform_I" type="StaticBody2D" parent="Platforms"]
-position = Vector2(2750, 620)
+position = Vector2(2650, 580)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_I"]
 shape = SubResource("plat")
@@ -201,7 +220,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 200, 24)
 
 [node name="Platform_J" type="StaticBody2D" parent="Platforms"]
-position = Vector2(3050, 510)
+position = Vector2(2950, 460)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_J"]
 shape = SubResource("plat")
@@ -214,12 +233,51 @@ region_enabled = true
 region_rect = Rect2(0, 0, 200, 24)
 
 [node name="Platform_K" type="StaticBody2D" parent="Platforms"]
-position = Vector2(3350, 410)
+position = Vector2(3250, 360)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_K"]
-shape = SubResource("plat")
+shape = SubResource("plat_sm")
 
 [node name="Visual" type="Sprite2D" parent="Platforms/Platform_K"]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("tile")
+region_enabled = true
+region_rect = Rect2(0, 0, 120, 24)
+
+[node name="Platform_L" type="StaticBody2D" parent="Platforms"]
+position = Vector2(3550, 460)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_L"]
+shape = SubResource("plat")
+
+[node name="Visual" type="Sprite2D" parent="Platforms/Platform_L"]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("tile")
+region_enabled = true
+region_rect = Rect2(0, 0, 200, 24)
+
+[node name="Platform_M" type="StaticBody2D" parent="Platforms"]
+position = Vector2(3850, 560)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_M"]
+shape = SubResource("plat")
+
+[node name="Visual" type="Sprite2D" parent="Platforms/Platform_M"]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("tile")
+region_enabled = true
+region_rect = Rect2(0, 0, 200, 24)
+
+[node name="Platform_N" type="StaticBody2D" parent="Platforms"]
+position = Vector2(4150, 440)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_N"]
+shape = SubResource("plat")
+
+[node name="Visual" type="Sprite2D" parent="Platforms/Platform_N"]
 texture_filter = 1
 texture_repeat = 2
 texture = ExtResource("tile")
@@ -227,7 +285,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 200, 24)
 
 [node name="Platform_Exit" type="StaticBody2D" parent="Platforms"]
-position = Vector2(3600, 510)
+position = Vector2(4550, 480)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_Exit"]
 shape = SubResource("plat")
@@ -241,47 +299,68 @@ region_rect = Rect2(0, 0, 200, 24)
 
 [node name="Hazards" type="Node2D" parent="."]
 
+[node name="FallingBox1" parent="Hazards" instance=ExtResource("fallingbox")]
+position = Vector2(600, 488)
+
+[node name="FallingBox2" parent="Hazards" instance=ExtResource("fallingbox")]
+position = Vector2(1150, 488)
+fall_delay = 1.5
+
+[node name="FallingBox3" parent="Hazards" instance=ExtResource("fallingbox")]
+position = Vector2(3250, 348)
+fall_delay = 1.0
+
 [node name="MovingShelf1" parent="Hazards" instance=ExtResource("shelf")]
-position = Vector2(750, 460)
+position = Vector2(850, 388)
+speed = 100.0
 
 [node name="MovingShelf2" parent="Hazards" instance=ExtResource("shelf")]
-position = Vector2(2000, 460)
-move_distance = 120.0
+position = Vector2(2950, 448)
+move_distance = 130.0
 
 [node name="ConveyorBelt1" parent="Hazards" instance=ExtResource("conveyor")]
-position = Vector2(1050, 502)
+position = Vector2(1750, 468)
 
 [node name="ConveyorBelt2" parent="Hazards" instance=ExtResource("conveyor")]
-position = Vector2(2300, 402)
+position = Vector2(3550, 448)
 belt_direction = -1
+
+[node name="ConveyorBelt3" parent="Hazards" instance=ExtResource("conveyor")]
+position = Vector2(4150, 428)
 
 [node name="Checkpoints" type="Node2D" parent="."]
 
 [node name="Checkpoint1" parent="Checkpoints" instance=ExtResource("checkpoint")]
-position = Vector2(1300, 660)
+position = Vector2(1500, 568)
+
+[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("checkpoint")]
+position = Vector2(3900, 528)
 
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Pacer1" parent="Enemies" instance=ExtResource("pacer")]
-position = Vector2(1550, 540)
+position = Vector2(1450, 560)
+patrol_range = 80.0
 
 [node name="Pacer2" parent="Enemies" instance=ExtResource("pacer")]
-position = Vector2(2750, 540)
-patrol_range = 120.0
+position = Vector2(2650, 540)
 
 [node name="Chaser1" parent="Enemies" instance=ExtResource("chaser")]
-position = Vector2(3050, 440)
+position = Vector2(2350, 440)
+
+[node name="Chaser2" parent="Enemies" instance=ExtResource("chaser")]
+position = Vector2(3850, 520)
 
 [node name="WinZone" type="Area2D" parent="."]
-position = Vector2(3600, 430)
+position = Vector2(4550, 430)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WinZone"]
 shape = SubResource("win")
 
-[node name="WinVisual" type="ColorRect" parent="WinZone"]
-offset_left = -32.0
-offset_top = -64.0
-offset_right = 32.0
-offset_bottom = 0.0
-color = Color(1, 0.85, 0.1, 0.6)
+[node name="WinVisual" type="Sprite2D" parent="WinZone"]
+position = Vector2(0, -24)
+scale = Vector2(2, 2)
+texture_filter = 1
+texture = ExtResource("exit")
+script = ExtResource("windoor")
 

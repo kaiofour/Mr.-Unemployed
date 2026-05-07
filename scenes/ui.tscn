@@ -8,6 +8,10 @@
 [ext_resource type="Texture2D" path="res://assets/ui/win_title.png" id="6_win_title"]
 [ext_resource type="Texture2D" path="res://assets/ui/popup_btn.png" id="7_popup_btn"]
 [ext_resource type="Texture2D" path="res://assets/ui/popup_btn_hover.png" id="8_popup_btn_hover"]
+[ext_resource type="Texture2D" path="res://assets/ui/stamina_segment_full.png" id="9_seg_full"]
+[ext_resource type="Texture2D" path="res://assets/ui/stamina_segment_empty.png" id="10_seg_empty"]
+[ext_resource type="Texture2D" path="res://assets/ui/lives_icon.png" id="11_lives_icon"]
+[ext_resource type="FontFile" path="res://assets/fonts/PressStart2P-Regular.ttf" id="12_font"]
 
 [node name="UI" type="CanvasLayer" unique_id=909955884]
 process_mode = 3
@@ -21,22 +25,89 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="HUDBackground" type="ColorRect" parent="HUD" unique_id=556968260]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+offset_left = -176.0
+offset_top = -126.0
+offset_right = -20.0
+offset_bottom = -20.0
+color = Color(0, 0, 0, 0.45)
+
 [node name="VBoxContainer" type="VBoxContainer" parent="HUD" unique_id=556968263]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+offset_left = -168.0
+offset_top = -118.0
+offset_right = -28.0
+offset_bottom = -28.0
+theme_override_constants/separation = 6
 
 [node name="TimerLabel" type="Label" parent="HUD/VBoxContainer" unique_id=1929913765]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("12_font")
+theme_override_font_sizes/font_size = 12
 text = "Time:"
 
-[node name="LivesLabel" type="Label" parent="HUD/VBoxContainer" unique_id=1875500523]
+[node name="LivesDisplay" type="HBoxContainer" parent="HUD/VBoxContainer" unique_id=1875500523]
 layout_mode = 2
-text = "Lives:"
+theme_override_constants/separation = 4
 
-[node name="StaminaLabel" type="Label" parent="HUD/VBoxContainer" unique_id=2111183656]
+[node name="Icon1" type="TextureRect" parent="HUD/VBoxContainer/LivesDisplay" unique_id=1875500524]
 layout_mode = 2
-text = "Stamina:"
+custom_minimum_size = Vector2(32, 32)
+texture_filter = 1
+texture = ExtResource("11_lives_icon")
+stretch_mode = 0
+
+[node name="Icon2" type="TextureRect" parent="HUD/VBoxContainer/LivesDisplay" unique_id=1875500525]
+layout_mode = 2
+custom_minimum_size = Vector2(32, 32)
+texture_filter = 1
+texture = ExtResource("11_lives_icon")
+stretch_mode = 0
+
+[node name="Icon3" type="TextureRect" parent="HUD/VBoxContainer/LivesDisplay" unique_id=1875500526]
+layout_mode = 2
+custom_minimum_size = Vector2(32, 32)
+texture_filter = 1
+texture = ExtResource("11_lives_icon")
+stretch_mode = 0
+
+[node name="StaminaBar" type="HBoxContainer" parent="HUD/VBoxContainer" unique_id=2111183656]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Seg1" type="TextureRect" parent="HUD/VBoxContainer/StaminaBar" unique_id=2111183657]
+layout_mode = 2
+custom_minimum_size = Vector2(24, 24)
+texture_filter = 1
+texture = ExtResource("9_seg_full")
+stretch_mode = 0
+
+[node name="Seg2" type="TextureRect" parent="HUD/VBoxContainer/StaminaBar" unique_id=2111183658]
+layout_mode = 2
+custom_minimum_size = Vector2(24, 24)
+texture_filter = 1
+texture = ExtResource("9_seg_full")
+stretch_mode = 0
+
+[node name="Seg3" type="TextureRect" parent="HUD/VBoxContainer/StaminaBar" unique_id=2111183659]
+layout_mode = 2
+custom_minimum_size = Vector2(24, 24)
+texture_filter = 1
+texture = ExtResource("9_seg_full")
+stretch_mode = 0
 
 [node name="LevelTimer" type="Timer" parent="." unique_id=2112117044]
 
@@ -46,10 +117,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -90.0
-offset_right = 150.0
-offset_bottom = 90.0
+offset_left = -180.0
+offset_top = -105.0
+offset_right = 180.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -72,10 +143,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -50.0
-offset_right = 90.0
-offset_bottom = 50.0
+offset_left = -155.0
+offset_top = -40.0
+offset_right = 155.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 vertical = true
@@ -83,6 +154,8 @@ theme_override_constants/separation = 12
 
 [node name="PauseLabel" type="Label" parent="PauseMenu/PauseContainer" unique_id=1538966524]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("12_font")
+theme_override_font_sizes/font_size = 20
 text = "Paused"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -94,7 +167,7 @@ theme_override_constants/separation = 8
 
 [node name="ResumeButton" type="TextureButton" parent="PauseMenu/PauseContainer/ButtonContainer" unique_id=613792180]
 layout_mode = 2
-custom_minimum_size = Vector2(80, 28)
+custom_minimum_size = Vector2(100, 32)
 texture_filter = 1
 texture_normal = ExtResource("7_popup_btn")
 texture_hover = ExtResource("8_popup_btn_hover")
@@ -110,17 +183,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -25.0
+offset_left = -24.0
 offset_top = -8.0
-offset_right = 25.0
+offset_right = 24.0
 offset_bottom = 8.0
+theme_override_fonts/font = ExtResource("12_font")
+theme_override_font_sizes/font_size = 10
 text = "Resume"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RetryButton" type="TextureButton" parent="PauseMenu/PauseContainer/ButtonContainer" unique_id=701221034]
 layout_mode = 2
-custom_minimum_size = Vector2(80, 28)
+custom_minimum_size = Vector2(100, 32)
 texture_filter = 1
 texture_normal = ExtResource("7_popup_btn")
 texture_hover = ExtResource("8_popup_btn_hover")
@@ -136,17 +211,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -18.0
+offset_left = -20.0
 offset_top = -8.0
-offset_right = 18.0
+offset_right = 20.0
 offset_bottom = 8.0
+theme_override_fonts/font = ExtResource("12_font")
+theme_override_font_sizes/font_size = 10
 text = "Retry"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MenuButton" type="TextureButton" parent="PauseMenu/PauseContainer/ButtonContainer" unique_id=1651672056]
 layout_mode = 2
-custom_minimum_size = Vector2(80, 28)
+custom_minimum_size = Vector2(100, 32)
 texture_filter = 1
 texture_normal = ExtResource("7_popup_btn")
 texture_hover = ExtResource("8_popup_btn_hover")
@@ -166,6 +243,8 @@ offset_left = -18.0
 offset_top = -8.0
 offset_right = 18.0
 offset_bottom = 8.0
+theme_override_fonts/font = ExtResource("12_font")
+theme_override_font_sizes/font_size = 10
 text = "Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -176,10 +255,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -120.0
-offset_top = -80.0
-offset_right = 120.0
-offset_bottom = 80.0
+offset_left = -140.0
+offset_top = -65.0
+offset_right = 140.0
+offset_bottom = 65.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -202,10 +281,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -50.0
-offset_right = 100.0
-offset_bottom = 50.0
+offset_left = -115.0
+offset_top = -40.0
+offset_right = 115.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 vertical = true
@@ -225,7 +304,7 @@ theme_override_constants/separation = 8
 
 [node name="RetryButton" type="TextureButton" parent="GameoverMenu/GameoverContainer/ButtonContainer" unique_id=1375852647]
 layout_mode = 2
-custom_minimum_size = Vector2(80, 28)
+custom_minimum_size = Vector2(100, 32)
 texture_filter = 1
 texture_normal = ExtResource("7_popup_btn")
 texture_hover = ExtResource("8_popup_btn_hover")
@@ -241,17 +320,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -18.0
+offset_left = -20.0
 offset_top = -8.0
-offset_right = 18.0
+offset_right = 20.0
 offset_bottom = 8.0
+theme_override_fonts/font = ExtResource("12_font")
+theme_override_font_sizes/font_size = 10
 text = "Retry"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MenuButton" type="TextureButton" parent="GameoverMenu/GameoverContainer/ButtonContainer" unique_id=261712178]
 layout_mode = 2
-custom_minimum_size = Vector2(80, 28)
+custom_minimum_size = Vector2(100, 32)
 texture_filter = 1
 texture_normal = ExtResource("7_popup_btn")
 texture_hover = ExtResource("8_popup_btn_hover")
@@ -271,6 +352,8 @@ offset_left = -18.0
 offset_top = -8.0
 offset_right = 18.0
 offset_bottom = 8.0
+theme_override_fonts/font = ExtResource("12_font")
+theme_override_font_sizes/font_size = 10
 text = "Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -282,10 +365,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -90.0
-offset_right = 150.0
-offset_bottom = 90.0
+offset_left = -160.0
+offset_top = -65.0
+offset_right = 160.0
+offset_bottom = 65.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -308,10 +391,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -110.0
-offset_top = -50.0
-offset_right = 110.0
-offset_bottom = 50.0
+offset_left = -135.0
+offset_top = -40.0
+offset_right = 135.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 12
@@ -330,7 +413,7 @@ theme_override_constants/separation = 8
 
 [node name="NextButton" type="TextureButton" parent="WinMenu/WinContainer/ButtonContainer" unique_id=1618718657]
 layout_mode = 2
-custom_minimum_size = Vector2(90, 28)
+custom_minimum_size = Vector2(120, 32)
 texture_filter = 1
 texture_normal = ExtResource("7_popup_btn")
 texture_hover = ExtResource("8_popup_btn_hover")
@@ -346,17 +429,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -28.0
+offset_left = -36.0
 offset_top = -8.0
-offset_right = 28.0
+offset_right = 36.0
 offset_bottom = 8.0
+theme_override_fonts/font = ExtResource("12_font")
+theme_override_font_sizes/font_size = 10
 text = "Next Level"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MenuButton" type="TextureButton" parent="WinMenu/WinContainer/ButtonContainer" unique_id=815339996]
 layout_mode = 2
-custom_minimum_size = Vector2(90, 28)
+custom_minimum_size = Vector2(120, 32)
 texture_filter = 1
 texture_normal = ExtResource("7_popup_btn")
 texture_hover = ExtResource("8_popup_btn_hover")
@@ -372,10 +457,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -28.0
+offset_left = -36.0
 offset_top = -8.0
-offset_right = 28.0
+offset_right = 36.0
 offset_bottom = 8.0
+theme_override_fonts/font = ExtResource("12_font")
+theme_override_font_sizes/font_size = 10
 text = "Main Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
