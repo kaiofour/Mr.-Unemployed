@@ -1,6 +1,13 @@
 [gd_scene format=3 uid="uid://16du8oxbopaf"]
 
 [ext_resource type="Script" uid="uid://bc7qhsnyprti0" path="res://scripts/ui.gd" id="1_nt7q6"]
+[ext_resource type="Texture2D" path="res://assets/ui/pause_panel.png" id="2_pause_panel"]
+[ext_resource type="Texture2D" path="res://assets/ui/gameover_panel.png" id="3_gameover_panel"]
+[ext_resource type="Texture2D" path="res://assets/ui/gameover_title.png" id="4_gameover_title"]
+[ext_resource type="Texture2D" path="res://assets/ui/win_panel.png" id="5_win_panel"]
+[ext_resource type="Texture2D" path="res://assets/ui/win_title.png" id="6_win_title"]
+[ext_resource type="Texture2D" path="res://assets/ui/popup_btn.png" id="7_popup_btn"]
+[ext_resource type="Texture2D" path="res://assets/ui/popup_btn_hover.png" id="8_popup_btn_hover"]
 
 [node name="UI" type="CanvasLayer" unique_id=909955884]
 process_mode = 3
@@ -33,110 +40,8 @@ text = "Stamina:"
 
 [node name="LevelTimer" type="Timer" parent="." unique_id=2112117044]
 
-[node name="PauseMenu" type="ColorRect" parent="." unique_id=2124112829]
-custom_minimum_size = Vector2(250, 150)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0.5882353)
-
-[node name="PauseContainer" type="BoxContainer" parent="PauseMenu" unique_id=1157713630]
-custom_minimum_size = Vector2(124, 58)
+[node name="PauseMenu" type="Control" parent="." unique_id=2124112829]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -90.5
-offset_top = -29.0
-offset_right = 90.5
-offset_bottom = 29.0
-grow_horizontal = 2
-grow_vertical = 2
-vertical = true
-
-[node name="PauseLabel" type="Label" parent="PauseMenu/PauseContainer" unique_id=1538966524]
-layout_mode = 2
-text = "Paused"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ButtonContainer" type="BoxContainer" parent="PauseMenu/PauseContainer" unique_id=264400467]
-layout_mode = 2
-
-[node name="ResumeButton" type="Button" parent="PauseMenu/PauseContainer/ButtonContainer" unique_id=613792180]
-layout_mode = 2
-text = "Resume"
-
-[node name="RetryButton" type="Button" parent="PauseMenu/PauseContainer/ButtonContainer" unique_id=701221034]
-custom_minimum_size = Vector2(70, 0)
-layout_mode = 2
-text = "Retry"
-
-[node name="MenuButton" type="Button" parent="PauseMenu/PauseContainer/ButtonContainer" unique_id=1651672056]
-custom_minimum_size = Vector2(70, 0)
-layout_mode = 2
-text = "Menu"
-
-[node name="GameoverMenu" type="ColorRect" parent="." unique_id=1557793287]
-custom_minimum_size = Vector2(200, 150)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 1, 1, 0.60784316)
-
-[node name="GameoverContainer" type="BoxContainer" parent="GameoverMenu" unique_id=1440230102]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -62.0
-offset_top = -29.0
-offset_right = 62.0
-offset_bottom = 29.0
-grow_horizontal = 2
-grow_vertical = 2
-vertical = true
-
-[node name="GameoverLabel" type="Label" parent="GameoverMenu/GameoverContainer" unique_id=1456795779]
-layout_mode = 2
-text = "Game Over"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ButtonContainer" type="BoxContainer" parent="GameoverMenu/GameoverContainer" unique_id=1963411929]
-layout_mode = 2
-alignment = 1
-
-[node name="RetryButton" type="Button" parent="GameoverMenu/GameoverContainer/ButtonContainer" unique_id=1375852647]
-custom_minimum_size = Vector2(70, 0)
-layout_mode = 2
-text = "Retry"
-
-[node name="MenuButton" type="Button" parent="GameoverMenu/GameoverContainer/ButtonContainer" unique_id=261712178]
-custom_minimum_size = Vector2(70, 0)
-layout_mode = 2
-text = "Menu"
-
-[node name="WinMenu" type="ColorRect" parent="." unique_id=552552297]
-visible = false
-custom_minimum_size = Vector2(300, 180)
-anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -147,7 +52,254 @@ offset_right = 150.0
 offset_bottom = 90.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.15, 0.15, 0.18, 0.92)
+
+[node name="PanelBG" type="TextureRect" parent="PauseMenu" unique_id=900000001]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture_filter = 1
+texture = ExtResource("2_pause_panel")
+stretch_mode = 0
+
+[node name="PauseContainer" type="BoxContainer" parent="PauseMenu" unique_id=1157713630]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -50.0
+offset_right = 90.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+theme_override_constants/separation = 12
+
+[node name="PauseLabel" type="Label" parent="PauseMenu/PauseContainer" unique_id=1538966524]
+layout_mode = 2
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonContainer" type="BoxContainer" parent="PauseMenu/PauseContainer" unique_id=264400467]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 8
+
+[node name="ResumeButton" type="TextureButton" parent="PauseMenu/PauseContainer/ButtonContainer" unique_id=613792180]
+layout_mode = 2
+custom_minimum_size = Vector2(80, 28)
+texture_filter = 1
+texture_normal = ExtResource("7_popup_btn")
+texture_hover = ExtResource("8_popup_btn_hover")
+texture_pressed = ExtResource("8_popup_btn_hover")
+texture_focused = ExtResource("7_popup_btn")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="ResumeLabel" type="Label" parent="PauseMenu/PauseContainer/ButtonContainer/ResumeButton" unique_id=900000002]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -8.0
+offset_right = 25.0
+offset_bottom = 8.0
+text = "Resume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RetryButton" type="TextureButton" parent="PauseMenu/PauseContainer/ButtonContainer" unique_id=701221034]
+layout_mode = 2
+custom_minimum_size = Vector2(80, 28)
+texture_filter = 1
+texture_normal = ExtResource("7_popup_btn")
+texture_hover = ExtResource("8_popup_btn_hover")
+texture_pressed = ExtResource("8_popup_btn_hover")
+texture_focused = ExtResource("7_popup_btn")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="RetryLabel" type="Label" parent="PauseMenu/PauseContainer/ButtonContainer/RetryButton" unique_id=900000003]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -8.0
+offset_right = 18.0
+offset_bottom = 8.0
+text = "Retry"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuButton" type="TextureButton" parent="PauseMenu/PauseContainer/ButtonContainer" unique_id=1651672056]
+layout_mode = 2
+custom_minimum_size = Vector2(80, 28)
+texture_filter = 1
+texture_normal = ExtResource("7_popup_btn")
+texture_hover = ExtResource("8_popup_btn_hover")
+texture_pressed = ExtResource("8_popup_btn_hover")
+texture_focused = ExtResource("7_popup_btn")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MenuLabel" type="Label" parent="PauseMenu/PauseContainer/ButtonContainer/MenuButton" unique_id=900000004]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -8.0
+offset_right = 18.0
+offset_bottom = 8.0
+text = "Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameoverMenu" type="Control" parent="." unique_id=1557793287]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -80.0
+offset_right = 120.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelBG" type="TextureRect" parent="GameoverMenu" unique_id=900000005]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture_filter = 1
+texture = ExtResource("3_gameover_panel")
+stretch_mode = 0
+
+[node name="GameoverContainer" type="BoxContainer" parent="GameoverMenu" unique_id=1440230102]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+theme_override_constants/separation = 12
+
+[node name="GameoverLabel" type="TextureRect" parent="GameoverMenu/GameoverContainer" unique_id=1456795779]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 36)
+texture_filter = 1
+texture = ExtResource("4_gameover_title")
+stretch_mode = 0
+
+[node name="ButtonContainer" type="BoxContainer" parent="GameoverMenu/GameoverContainer" unique_id=1963411929]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 8
+
+[node name="RetryButton" type="TextureButton" parent="GameoverMenu/GameoverContainer/ButtonContainer" unique_id=1375852647]
+layout_mode = 2
+custom_minimum_size = Vector2(80, 28)
+texture_filter = 1
+texture_normal = ExtResource("7_popup_btn")
+texture_hover = ExtResource("8_popup_btn_hover")
+texture_pressed = ExtResource("8_popup_btn_hover")
+texture_focused = ExtResource("7_popup_btn")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="RetryLabel" type="Label" parent="GameoverMenu/GameoverContainer/ButtonContainer/RetryButton" unique_id=900000006]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -8.0
+offset_right = 18.0
+offset_bottom = 8.0
+text = "Retry"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuButton" type="TextureButton" parent="GameoverMenu/GameoverContainer/ButtonContainer" unique_id=261712178]
+layout_mode = 2
+custom_minimum_size = Vector2(80, 28)
+texture_filter = 1
+texture_normal = ExtResource("7_popup_btn")
+texture_hover = ExtResource("8_popup_btn_hover")
+texture_pressed = ExtResource("8_popup_btn_hover")
+texture_focused = ExtResource("7_popup_btn")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MenuLabel" type="Label" parent="GameoverMenu/GameoverContainer/ButtonContainer/MenuButton" unique_id=900000007]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -8.0
+offset_right = 18.0
+offset_bottom = 8.0
+text = "Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WinMenu" type="Control" parent="." unique_id=552552297]
+visible = false
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -90.0
+offset_right = 150.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelBG" type="TextureRect" parent="WinMenu" unique_id=900000008]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture_filter = 1
+texture = ExtResource("5_win_panel")
+stretch_mode = 0
 
 [node name="WinContainer" type="VBoxContainer" parent="WinMenu" unique_id=1001001001]
 layout_mode = 1
@@ -156,29 +308,74 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -60.0
-offset_right = 100.0
-offset_bottom = 60.0
+offset_left = -110.0
+offset_top = -50.0
+offset_right = 110.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 12
 
-[node name="WinLabel" type="Label" parent="WinMenu/WinContainer" unique_id=1001001002]
+[node name="WinLabel" type="TextureRect" parent="WinMenu/WinContainer" unique_id=1001001002]
 layout_mode = 2
-text = "Level Clear!"
-horizontal_alignment = 1
-vertical_alignment = 1
+custom_minimum_size = Vector2(220, 36)
+texture_filter = 1
+texture = ExtResource("6_win_title")
+stretch_mode = 0
 
 [node name="ButtonContainer" type="BoxContainer" parent="WinMenu/WinContainer" unique_id=1001001003]
 layout_mode = 2
 alignment = 1
+theme_override_constants/separation = 8
 
-[node name="NextButton" type="Button" parent="WinMenu/WinContainer/ButtonContainer" unique_id=1618718657]
-custom_minimum_size = Vector2(90, 0)
+[node name="NextButton" type="TextureButton" parent="WinMenu/WinContainer/ButtonContainer" unique_id=1618718657]
 layout_mode = 2
+custom_minimum_size = Vector2(90, 28)
+texture_filter = 1
+texture_normal = ExtResource("7_popup_btn")
+texture_hover = ExtResource("8_popup_btn_hover")
+texture_pressed = ExtResource("8_popup_btn_hover")
+texture_focused = ExtResource("7_popup_btn")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="NextLabel" type="Label" parent="WinMenu/WinContainer/ButtonContainer/NextButton" unique_id=900000009]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -8.0
+offset_right = 28.0
+offset_bottom = 8.0
 text = "Next Level"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="MenuButton" type="Button" parent="WinMenu/WinContainer/ButtonContainer" unique_id=815339996]
-custom_minimum_size = Vector2(90, 0)
+[node name="MenuButton" type="TextureButton" parent="WinMenu/WinContainer/ButtonContainer" unique_id=815339996]
 layout_mode = 2
+custom_minimum_size = Vector2(90, 28)
+texture_filter = 1
+texture_normal = ExtResource("7_popup_btn")
+texture_hover = ExtResource("8_popup_btn_hover")
+texture_pressed = ExtResource("8_popup_btn_hover")
+texture_focused = ExtResource("7_popup_btn")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MenuLabel" type="Label" parent="WinMenu/WinContainer/ButtonContainer/MenuButton" unique_id=900000010]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -8.0
+offset_right = 28.0
+offset_bottom = 8.0
 text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1

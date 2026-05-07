@@ -19,6 +19,8 @@ var stamina_regen_timer := 0.0
 var facing_dir := 1.0
 var is_dead := false
 
+@onready var sprite := $AnimatedSprite2D
+
 func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
@@ -37,9 +39,21 @@ func _physics_process(delta: float) -> void:
 		_process_movement()
 
 	move_and_slide()
+	_update_animation()
 
 	if position.y > 1100.0:
 		_die()
+
+func _update_animation() -> void:
+	if is_dashing:
+		sprite.play("dash")
+	elif not is_on_floor():
+		sprite.play("jump")
+	elif abs(velocity.x) > 10.0:
+		sprite.play("walk")
+	else:
+		sprite.play("idle")
+	sprite.flip_h = facing_dir < 0
 
 func _process_movement() -> void:
 	var dir := Input.get_axis("move_left", "move_right")

@@ -132,11 +132,34 @@ The player navigates through a level by running and jumping across platforms →
 ---
 
 ### 📌 Current Progress
-Basic project setup in Godot with initial scene structure planned. Player movement prototype will be implemented in early development.
+
+#### ✅ Done
+- Player controller — movement, jump, dash, stamina, lives, respawn
+- Enemy AI — Pacer (patrol) and Chaser (detection + follow) with directional sprite flipping
+- Hazards — FallingBox, MovingShelf, ConveyorBelt, Checkpoint
+- UI/HUD — lives, stamina bar, countdown timer, pause, game over, win screens
+- GameManager autoload — lives tracking, respawn, level progression
+- AudioManager autoload — music + SFX infrastructure (awaiting audio files)
+- 3 hand-crafted levels — Warehouse, Office Floor, Cafeteria
+- Main menu — custom background, title logo, TextureButton navigation
+- Popup menus — custom pixel art panels for pause, game over, and win screens
+- Level backgrounds — pixel art backdrops for all 3 levels
+- Platform tiles — tiling pixel art surfaces for all 3 levels
+- Player sprites — AnimatedSprite2D with idle, walk, jump, and dash animations
+- Enemy sprites — Pacer and Chaser with custom pixel art
+
+#### 🔄 In Progress
+- Hazard sprites (FallingBox, MovingShelf, ConveyorBelt, shadow indicator)
+- HUD visual elements (stamina bar icons, lives icons)
+
+#### ⬜ To Do
+- Audio files (.ogg) for music and SFX per level
+- PC + Web (HTML5) export and testing
+- Final playtesting and bug fixes
 
 ---
 
 ### 🧱 Object-Oriented Approach
-The player will be structured as a reusable scene with its own script, while hazards and level elements will use modular scenes for easy reuse across levels.
+Each game element (player, enemies, hazards, checkpoints) is a standalone reusable scene with its own script. Levels instance these scenes and wire signals through a shared GameManager autoload singleton.
 
 ---

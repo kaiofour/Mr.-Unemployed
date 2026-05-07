@@ -5,6 +5,8 @@ extends CharacterBody2D
 var is_chasing := false
 var player_ref: Player = null
 
+@onready var sprite := $Sprite2D
+
 func _ready() -> void:
 	$DetectionZone.body_entered.connect(_on_detection_entered)
 	$DetectionZone.body_exited.connect(_on_detection_exited)
@@ -18,6 +20,8 @@ func _physics_process(_delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, speed)
 	move_and_slide()
+	if velocity.x != 0.0:
+		sprite.flip_h = velocity.x < 0
 
 func _on_detection_entered(body: Node2D) -> void:
 	if body is Player:

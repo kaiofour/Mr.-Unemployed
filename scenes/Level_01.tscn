@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" path="res://scenes/Player.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://16du8oxbopaf" path="res://scenes/ui.tscn" id="2_ud571"]
 [ext_resource type="Script" uid="uid://ek0x41f00gqq" path="res://scripts/Level_01.gd" id="3"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/level1_bg.png" id="4_bg"]
+[ext_resource type="Texture2D" path="res://assets/sprites/tiles/tile_warehouse.png" id="5_tile"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(1280, 40)
@@ -12,6 +14,20 @@ size = Vector2(200, 24)
 
 [node name="Level_01" type="Node2D" unique_id=151430854]
 script = ExtResource("3")
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=800000001]
+layer = -1
+
+[node name="BackgroundRect" type="TextureRect" parent="Background" unique_id=800000002]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_filter = 1
+texture = ExtResource("4_bg")
+stretch_mode = 6
 
 [node name="UI" parent="." unique_id=909955884 instance=ExtResource("2_ud571")]
 
@@ -26,9 +42,12 @@ position = Vector2(640, 700)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Ground" unique_id=850595903]
 shape = SubResource("1")
 
-[node name="Visual" type="Polygon2D" parent="Platforms/Ground" unique_id=994015124]
-color = Color(0.25, 0.25, 0.28, 1)
-polygon = PackedVector2Array(-640, -20, 640, -20, 640, 20, -640, 20)
+[node name="Visual" type="Sprite2D" parent="Platforms/Ground" unique_id=994015124]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("5_tile")
+region_enabled = true
+region_rect = Rect2(0, 0, 1280, 32)
 
 [node name="Platform_A" type="StaticBody2D" parent="Platforms" unique_id=365579037]
 position = Vector2(300, 592)
@@ -36,9 +55,12 @@ position = Vector2(300, 592)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_A" unique_id=1249910677]
 shape = SubResource("2")
 
-[node name="Visual" type="Polygon2D" parent="Platforms/Platform_A" unique_id=1369232254]
-color = Color(0.4, 0.55, 0.45, 1)
-polygon = PackedVector2Array(-100, -12, 100, -12, 100, 12, -100, 12)
+[node name="Visual" type="Sprite2D" parent="Platforms/Platform_A" unique_id=1369232254]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("5_tile")
+region_enabled = true
+region_rect = Rect2(0, 0, 200, 24)
 
 [node name="Platform_B" type="StaticBody2D" parent="Platforms" unique_id=1908139545]
 position = Vector2(600, 592)
@@ -46,9 +68,12 @@ position = Vector2(600, 592)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_B" unique_id=519269577]
 shape = SubResource("2")
 
-[node name="Visual" type="Polygon2D" parent="Platforms/Platform_B" unique_id=1427985262]
-color = Color(0.4, 0.55, 0.45, 1)
-polygon = PackedVector2Array(-100, -12, 100, -12, 100, 12, -100, 12)
+[node name="Visual" type="Sprite2D" parent="Platforms/Platform_B" unique_id=1427985262]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("5_tile")
+region_enabled = true
+region_rect = Rect2(0, 0, 200, 24)
 
 [node name="Platform_C" type="StaticBody2D" parent="Platforms" unique_id=334420923]
 position = Vector2(880, 492)
@@ -56,9 +81,12 @@ position = Vector2(880, 492)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_C" unique_id=451491013]
 shape = SubResource("2")
 
-[node name="Visual" type="Polygon2D" parent="Platforms/Platform_C" unique_id=1573085785]
-color = Color(0.4, 0.55, 0.45, 1)
-polygon = PackedVector2Array(-100, -12, 100, -12, 100, 12, -100, 12)
+[node name="Visual" type="Sprite2D" parent="Platforms/Platform_C" unique_id=1573085785]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("5_tile")
+region_enabled = true
+region_rect = Rect2(0, 0, 200, 24)
 
 [node name="Platform_D" type="StaticBody2D" parent="Platforms" unique_id=349883124]
 position = Vector2(1150, 592)
@@ -66,9 +94,12 @@ position = Vector2(1150, 592)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/Platform_D" unique_id=392956910]
 shape = SubResource("2")
 
-[node name="Visual" type="Polygon2D" parent="Platforms/Platform_D" unique_id=1274333397]
-color = Color(0.4, 0.55, 0.45, 1)
-polygon = PackedVector2Array(-100, -12, 100, -12, 100, 12, -100, 12)
+[node name="Visual" type="Sprite2D" parent="Platforms/Platform_D" unique_id=1274333397]
+texture_filter = 1
+texture_repeat = 2
+texture = ExtResource("5_tile")
+region_enabled = true
+region_rect = Rect2(0, 0, 200, 24)
 
 [node name="WinZone" type="Area2D" parent="."]
 position = Vector2(1150, 540)

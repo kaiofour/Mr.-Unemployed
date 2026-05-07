@@ -6,6 +6,8 @@ extends CharacterBody2D
 var start_x := 0.0
 var direction := 1.0
 
+@onready var sprite := $Sprite2D
+
 func _ready() -> void:
 	start_x = global_position.x
 	$Hitbox.body_entered.connect(_on_hitbox_body_entered)
@@ -19,6 +21,7 @@ func _physics_process(delta: float) -> void:
 	if abs(dist) >= patrol_range:
 		direction *= -1.0
 		global_position.x = start_x + clampf(dist, -patrol_range, patrol_range)
+	sprite.flip_h = direction < 0
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body is Player:

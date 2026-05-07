@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/Pacer.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemies/pacer.png" id="2_pacer"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(20, 40)
@@ -11,12 +12,13 @@ size = Vector2(22, 42)
 [node name="Pacer" type="CharacterBody2D"]
 script = ExtResource("1")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture_filter = 1
+texture = ExtResource("2_pacer")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("1")
-
-[node name="Body" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(-10, -20, 10, -20, 10, 20, -10, 20)
-color = Color(1, 0.5, 0.2, 1)
 
 [node name="Hitbox" type="Area2D" parent="."]
 
